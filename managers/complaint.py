@@ -21,7 +21,7 @@ class ComplaintManager:
         if user["role"] == RoleType.complainer:
             q = q.where(complaint.c.complainer_id == user["id"])
         elif user["role"] == RoleType.approver:
-            q = q.where(complaint.c.state == State.pending)
+            q = q.where(complaint.c.status == State.pending)
         return await database.fetch_all(q)
 
     @staticmethod
